@@ -5,6 +5,8 @@ import Nav from './components/Nav';
 import Topics from './components/Topics';
 import ArticlesList from './components/ArticlesList';
 import Article from './components/Article';
+import Users from './components/Users';
+import User from './components/User';
 
 function App() {
   return (
@@ -15,6 +17,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Topics />
+          </Route>
+          <Route exact path="/users">
+            <Users />
+          </Route>
+          <Route exact path="/users/:user">
+            <User />
           </Route>
           <Route exact path="/articlesList">
             <ArticlesList />

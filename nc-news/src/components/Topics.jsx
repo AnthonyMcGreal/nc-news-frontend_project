@@ -1,26 +1,32 @@
 import {useState, useEffect} from 'react'
-import axios from 'axios'
+import { Link } from 'react-router-dom'
+import {getTopics} from '../api'
 
 const Topics = () => {
 
   const [topics, setTopics] = useState([]);
 
-  const getTopics = useEffect(() => {
-      axios.get('https://news-app-anthony-mcgreal.herokuapp.com/api/topics')
-      .then((response) => {
-          let array = response.data.topics
-          console.log(response, 'array')
-          setTopics(array)
+  
+  useEffect(() => {
+      getTopics().then((response)=> {
+          setTopics(response)
       })
   },[])
-  console.log(topics)
+
+  if(topics.length ===0 ) return 'Loading....'
+
     return (
         <div className="Topics">
             <ul>
                 {topics.map((topic) => {
-                    return <p>{topic.slug}</p>
-                })}
-            </ul>
+                    return (
+                    <li key={topic.slug}>
+                        <Link to={`/articlesList?topic=${topic.slug}`}>
+                        {topic.slug}
+                        </Link>
+                    </li>
+                )})}
+                </ul>
         </div>
     );
 };
