@@ -4,9 +4,9 @@ import { getUser } from '../api';
 
 const User = () => {
 
-    const [userProfile, setUserProfile] = useState({})
-
-    const username = useLocation().pathname.split('/')[2];
+    const [userProfile, setUserProfile] = useState([{}])
+    const search = useLocation().search;
+    const username = new URLSearchParams(search).get('username')
     
     useEffect(()=>{
        getUser(username).then((response)=> {
@@ -14,8 +14,8 @@ const User = () => {
        })
     },[username])
 
-    if(!userProfile.hasOwnProperty('username'))return 'Loading profile....'
-    console.log(userProfile, username)
+    if(!userProfile[0].hasOwnProperty('username'))return 'Loading profile....'
+
     return (
         <div>
           <h3>{userProfile[0].username}</h3>

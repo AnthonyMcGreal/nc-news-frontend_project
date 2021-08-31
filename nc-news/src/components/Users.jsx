@@ -20,7 +20,7 @@ const Users = () => {
                 {users.map((user) => {
                     return (
                         <li key={user.username}>
-                            <Link to={`/users/${user.username}`}>
+                            <Link to={`/user?username=${user.username}`}>
                             {user.username}
                             </Link>
                         </li>

@@ -36,3 +36,7 @@
   border-width: 5px;
   border-style: solid;
 }
+
+ul {
+  list-style-type: none;
+}
