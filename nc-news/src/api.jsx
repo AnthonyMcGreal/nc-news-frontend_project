@@ -41,3 +41,32 @@ export function getUser(username){
         return response.data.user
     })
 }
+
+export function postNewComment(username, commentBody, article_id){
+    return axios.post(`https://news-app-anthony-mcgreal.herokuapp.com/api/articles/${article_id}/comments`,{
+        username:username,
+        body:commentBody
+    }).then((response)=> {
+        return response
+    })  
+}
+
+export function postNewArticle(author, title, body, topic){
+    return axios.post(`https://news-app-anthony-mcgreal.herokuapp.com/api/articles`,{
+        author:author,
+        title:title,
+        body:body,
+        topic:topic
+    }).then((response) => {
+        return response
+    })
+}
+
+export function postNewTopic(slug,description){
+    return axios.post(`https://news-app-anthony-mcgreal.herokuapp.com/api/topics`,{
+        slug:slug,
+        description:description
+    }).then((response) => {
+        return response
+    })
+}

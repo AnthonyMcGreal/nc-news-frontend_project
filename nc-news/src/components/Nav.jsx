@@ -2,12 +2,6 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => {
 
-    // function goToTopics(){
-    //     console.log('inside function')
-    //     return <Redirect to="/" />
-    // }
-
-
     return (
         <div className="Nav">
             <Link to="/">

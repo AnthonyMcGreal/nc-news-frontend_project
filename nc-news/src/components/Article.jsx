@@ -23,6 +23,7 @@ const Article = () => {
           <h3>Written by: {article.author}</h3>
           <h4>Created on: {article.created_at}</h4>
           <p>{article.body}</p>
+          <p>Upvotes:{article.votes}</p>
           <Comments article={article}/>
         </div>
     );
