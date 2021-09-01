@@ -47,6 +47,7 @@ export function postNewComment(username, commentBody, article_id){
         username:username,
         body:commentBody
     }).then((response)=> {
+        console.log(response)
         return response
     })  
 }
@@ -69,4 +70,16 @@ export function postNewTopic(slug,description){
     }).then((response) => {
         return response
     })
+}
+
+export function patchVotes(patchLocation,id,votes){
+    return axios.patch(`https://news-app-anthony-mcgreal.herokuapp.com/api/${patchLocation}/${id}`,{
+        inc_votes:votes
+    }).then((response) => {
+        return response
+    })
+}
+
+export function deleteItem(deletePath,id){
+    return axios.delete(`https://news-app-anthony-mcgreal.herokuapp.com/api/${deletePath}/${id}`)
 }

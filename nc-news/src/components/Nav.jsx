@@ -4,7 +4,10 @@ const Nav = () => {
 
     return (
         <div className="Nav">
-            <Link to="/">
+          <Link to="/home">
+              <button>Home</button>
+            </Link>
+            <Link to="/topics">
               <button>Topics</button>
             </Link>
             <Link to="/users">

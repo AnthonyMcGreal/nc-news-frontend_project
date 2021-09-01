@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
 import { getUser } from '../api';
 
-const User = () => {
+const User = ({isLoggedIn}) => {
 
     const [userProfile, setUserProfile] = useState([{}])
     const search = useLocation().search;
@@ -13,7 +13,7 @@ const User = () => {
           setUserProfile(response)
        })
     },[username])
-
+    if(!isLoggedIn) return <div>Please Log in to view this page</div>
     if(!userProfile[0].hasOwnProperty('username'))return 'Loading profile....'
 
     return (

@@ -1,12 +1,11 @@
 import {useState, useEffect} from 'react'
-import { getComments, postNewComment } from '../api';
+import { getComments, postNewComment, patchVotes, deleteItem } from '../api';
 
-const Comments = ({article}) => {
+const Comments = ({article, user}) => {
     
     const[comments, setComments] =useState([]);
     const[openComments, setOpenComments] = useState(false);
 
-    const[postUsername, setPostUsername] = useState('');
     const[postCommentBody, setPostCommentBody] = useState('')
 
     useEffect (() => {
@@ -15,45 +14,44 @@ const Comments = ({article}) => {
     })
 },[article.article_id])
 
-    const handleSubmit = (event) =>{
+    const handleSubmitNewComment = (event) =>{
         event.preventDefault();
+            postNewComment(user, postCommentBody, article.article_id)}
 
-        console.log(postUsername, postCommentBody, article.article_id)
-            postNewComment(postUsername, postCommentBody, article.article_id).then((response) => {
-                console.log(response)
-            }, (error) => {
-                console.log(error)
-            })
+    function patchCommentsVotes(number, id){
+        patchVotes('comments',id, number)
+    }
+
+    function deleteComment(comment_id){
+        deleteItem('comments', comment_id)
     }
 
     const toggleComments = () => setOpenComments((currentToggle) => !currentToggle)
-    
+
     return (
-        <div>
-            <button onClick={toggleComments}>{article.comment_count} Comments</button>
-            {openComments? <ul>
-                <form onSubmit={handleSubmit} id='postComment'>
-                    <label htmlFor='postUsername'> Username:
-                        <input id='postUsername' type='text' required  value={postUsername} onChange={(event) => {
-                            setPostUsername(event.target.value)
-                        }}/></label>
-                    <label htmlFor='postCommentBody'> Comment:
-                        <input id='postCommentBody' type='text' required value={postCommentBody} onChange={(event) => {
-                            setPostCommentBody(event.target.value)
-                        }}/>
-                    </label>
-
+      <div>
+        <button onClick={toggleComments}>{article.comment_count} Comments</button>
+        {openComments? <ul>
+            <form onSubmit={handleSubmitNewComment} id='postComment'>
+                 <label htmlFor='postCommentBody'> Comment:
+                     <input id='postCommentBody' type='text' required value={postCommentBody} onChange={(event) => {
+                         setPostCommentBody(event.target.value)
+                     }}/>
+                 </label>
                 <button type="submit">Post a new comment</button>
-                </form>
+            </form>
 
-              {comments.map((comment) => {
-                  return (
-                      <li key={comment.comment_id}>
-                        <p>{comment.author} on {comment.created_at}</p>  
-                        <p>{comment.body} </p>
-                        <p>Upvotes:{comment.votes}</p>
-                      </li>
-                  )
+        {comments.map((comment) => {
+            return (
+                <li key={comment.comment_id}>
+                <p>{comment.author} on {comment.created_at}</p>  
+                <p>{comment.body} </p>
+                <button onClick={()=>{patchCommentsVotes(1, comment.comment_id)}}>Upvote</button>
+                <p>Upvotes:{comment.votes}</p>
+                <button onClick={()=>{patchCommentsVotes(-1, comment.comment_id)}}>Downvote</button>
+                {user === comment.author? <button onClick={() => {deleteComment(comment.comment_id)}}>Delete comment</button>:null}
+                 </li>
+        )
               })}
             </ul> : null}
         </div>

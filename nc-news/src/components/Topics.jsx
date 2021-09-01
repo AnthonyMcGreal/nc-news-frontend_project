@@ -2,9 +2,9 @@ import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {getTopics, postNewTopic} from '../api'
 
-const Topics = () => {
+const Topics = ({isLoggedIn}) => {
 
-  const [topics, setTopics] = useState([]);
+  const[topics, setTopics] = useState([]);
   const[isNewTopicOpen, setIsNewTopicOpen] = useState(false)
   const[postTopicSlug, setPostTopicSlug] = useState('')
   const[postTopicDescription, setPostTopicDescription] = useState('')
@@ -19,13 +19,10 @@ const Topics = () => {
   const handleSubmit= (event) => {
     event.preventDefault();
     console.log()
-    postNewTopic(postTopicSlug,postTopicDescription).then((response) =>{
-        console.log(response)
-    }, (error) => {
-        console.log(error)
-    })
+    postNewTopic(postTopicSlug,postTopicDescription)
   }
-
+  
+  if(!isLoggedIn) return <div>Please Log in to view this page</div>
   if(topics.length ===0 ) return 'Loading....'
   const toggleNewTopic = () => setIsNewTopicOpen((currentToggle) => !currentToggle)
 

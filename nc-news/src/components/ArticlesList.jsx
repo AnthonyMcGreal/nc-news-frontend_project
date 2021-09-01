@@ -2,11 +2,10 @@ import {useState, useEffect} from 'react'
 import { useLocation, Link } from 'react-router-dom';
 import { getArticles, postNewArticle } from '../api';
 
-const ArticlesList = () => {
+const ArticlesList = ({isLoggedIn, user}) => {
 
   const[articles,setArticles] = useState([]);
   const[isNewArticleOpen, setIsNewArticleOpen] = useState(false)
-  const[postArticleAuthor, setPostArticleAuthor] = useState('')
   const[postArticleTitle, setPostArticleTitle] = useState('')
   const[postArticleBody, setPostArticleBody] =useState('')
   const search = useLocation().search;
@@ -18,12 +17,12 @@ const ArticlesList = () => {
         setArticles(response)
       })
   },[topic])
-
+  if(!isLoggedIn) return <div>Please Log in to view this page</div>
   if(articles.length ===0 ) return 'Loading articles....'
 
-  const handleSubmit= (event) => {
+  const handleSubmitArticle= (event) => {
     event.preventDefault();
-    postNewArticle(postArticleAuthor, postArticleTitle, postArticleBody, topic)
+    postNewArticle(user, postArticleTitle, postArticleBody, topic)
   }
 
   const toggleNewArticle = () => setIsNewArticleOpen((currentToggle) => !currentToggle)
@@ -44,11 +43,7 @@ const ArticlesList = () => {
 
           <button onClick={toggleNewArticle}>Post a new article</button>
           {isNewArticleOpen? 
-          <form onSubmit={handleSubmit} id='postArticle'>
-            <label htmlFor='postArticleAuthor'>Author
-            <input id='postArticleAuthor' type='text' required value={postArticleAuthor} onChange={(event) => {
-              setPostArticleAuthor(event.target.value)
-            }}/></label>
+          <form onSubmit={handleSubmitArticle} id='postArticle'>
             <label htmlFor='postArticleTitle'>Title
             <input id='postArticleTitle' type='text' required value={postArticleTitle} onChange={(event) => {
               setPostArticleTitle(event.target.value)
