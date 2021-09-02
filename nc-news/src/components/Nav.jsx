@@ -1,18 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = ({user, setIsLoggedIn, setUser}) => {
 
+const history = useHistory()
     return (
         <div className="Nav">
-          <Link to="/home">
-              <button>Home</button>
-            </Link>
-            <Link to="/topics">
-              <button>Topics</button>
-            </Link>
-            <Link to="/users">
-              <button>Users</button>
-            </Link>
+              <button onClick={() => history.push("/home")}>Home</button>
+              <button onClick={() => history.push("/topics")}>Topics</button>
+              <button onClick={() => history.push("/users")}>Users</button>
+        
+            {user?<button onClick={() => {
+                setIsLoggedIn(false) 
+                setUser(null)}}
+                >Logout</button>:null}
         </div>
     );
 };

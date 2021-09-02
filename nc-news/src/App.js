@@ -16,11 +16,16 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <Header user={user} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
-        <Nav />
+        <Header user={user} />
+        <Nav user={user} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
         <Switch>
           <Route exact path="/home">
-            <Home setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+            <Home
+              setIsLoggedIn={setIsLoggedIn}
+              setUser={setUser}
+              isLoggedIn={isLoggedIn}
+              user={user}
+            />
           </Route>
           <Route exact path="/topics">
             <Topics isLoggedIn={isLoggedIn} />

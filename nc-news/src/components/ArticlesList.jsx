@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useHistory } from 'react-router-dom';
 import { getArticles, postNewArticle } from '../api';
 
 const ArticlesList = ({isLoggedIn, user}) => {
@@ -10,6 +10,8 @@ const ArticlesList = ({isLoggedIn, user}) => {
   const[postArticleBody, setPostArticleBody] =useState('')
   const search = useLocation().search;
   const topic = new URLSearchParams(search).get('topic')
+  const history = useHistory()
+  
 
 
   useEffect(() => {
@@ -17,6 +19,7 @@ const ArticlesList = ({isLoggedIn, user}) => {
         setArticles(response)
       })
   },[topic])
+
   if(!isLoggedIn) return <div>Please Log in to view this page</div>
   if(articles.length ===0 ) return 'Loading articles....'
 
@@ -30,6 +33,7 @@ const ArticlesList = ({isLoggedIn, user}) => {
 
     return (
         <div className="ArticleList">
+          <button onClick={() => history.push("/topics")}>Return to topics</button>
           <ul>
             {articles.map((article) => {
               return (
