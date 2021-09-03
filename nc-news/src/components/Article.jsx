@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory} from 'react-router-dom';
 import { deleteItem, getArticle, patchVotes} from '../api';
 import Comments from './Comments';
 
@@ -8,6 +8,7 @@ const Article = ({isLoggedIn, user}) => {
   const[article, setArticle] =useState({});
   const search = useLocation().search;
   const article_id = new URLSearchParams(search).get('article_id')
+  const history = useHistory()
 
   useEffect(() => {
     getArticle(article_id).then((response)=>{
@@ -24,9 +25,10 @@ const Article = ({isLoggedIn, user}) => {
   function deleteArticle(article_id){
     deleteItem('articles',article_id)
   }
-
+  console.log(article)
   return (
         <div className="Article">
+          <button onClick={() => history.push(`/articlesList?topic=${article.topic}`)}>Return to articles</button>
           <h2>{article.title}</h2> 
           <h3>Written by: {article.author}</h3>
           {user === article.author? <button onClick={() => {deleteArticle(article.article_id)}}>Delete article</button>:null}
