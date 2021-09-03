@@ -7,7 +7,7 @@ const Header = ({user}) => {
         <div className="header">
             <h1>NorthCoders News</h1>
             {user?
-            <p>currently logged in as : {user}</p>:
+            <p>Currently logged in as : {user}</p>:
             <p>Please log in</p>}
 
             {user? null: 

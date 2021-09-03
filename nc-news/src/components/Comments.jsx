@@ -45,7 +45,7 @@ const Comments = ({article, user}) => {
         {comments.map((comment) => {
             return (
                 <li key={comment.comment_id}>
-                <p>{comment.author} on {new Date(comment.created_at)}</p>  
+                <p>{comment.author} on {comment.created_at}</p>  
                 <p>{comment.body} </p>
                 <button onClick={()=>{patchCommentsVotes(1, comment.comment_id, comment)}}>Upvote</button>
                 <p>Upvotes:{comment.votes}</p>
