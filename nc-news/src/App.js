@@ -11,8 +11,8 @@ import User from './components/User';
 import Home from './components/Home';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [user, setUser] = useState('tickle122');
 
   return (
     <BrowserRouter>

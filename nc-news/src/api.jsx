@@ -7,9 +7,10 @@ export function getTopics(){
     })
 }
 
-export function getArticles(topic){
-    return axios.get(`https://news-app-anthony-mcgreal.herokuapp.com/api/articles?topic=${topic}`)
+export function getArticles(topic, order,page){
+    return axios.get(`https://news-app-anthony-mcgreal.herokuapp.com/api/articles?topic=${topic}&order=${order}&limit=5&page=${page}`)
     .then((response) => {
+        console.log(response)
         return response.data.articles
     })
 }
@@ -21,8 +22,8 @@ export function getArticle(article_id){
     })
 }
 
-export function getComments(article_id){
-    return axios.get(`https://news-app-anthony-mcgreal.herokuapp.com/api/articles/${article_id}/comments`)
+export function getComments(article_id, page){
+    return axios.get(`https://news-app-anthony-mcgreal.herokuapp.com/api/articles/${article_id}/comments?limit=5&page=${page}`)
     .then((response) => {
         return response.data.comments
     })

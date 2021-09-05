@@ -4,7 +4,12 @@
   height: 100vh;
   min-width: 350px;
   background-color: rgb(236, 240, 245);
+  overflow: scroll;
 }
+
+/* ul {
+  list-style-type: none;
+} */
 
 .header {
   border: none;
@@ -89,13 +94,25 @@
   border-width: 5px;
   border-style: solid;
 }
+#comment {
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 4px;
+  width: 95%;
+  border-radius: 5px;
+  background-color: rgb(233, 243, 248);
+}
 
-.Article {
+/* .Article {
+  display: flex;
   border-color: pink;
   border-width: 5px;
   border-style: solid;
+  overflow: hidden;
 }
 
-ul {
-  list-style-type: none;
-}
+.Comments {
+  background-color: green;
+  display: flex;
+  overflow: hidden;
+} */

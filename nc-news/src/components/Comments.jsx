@@ -1,61 +1,69 @@
 import {useState, useEffect} from 'react'
-import { getComments, postNewComment, patchVotes, deleteItem } from '../api';
+import { getComments, postNewComment } from '../api';
+import Comment from './Comment'
 
 const Comments = ({article, user}) => {
     
     const[comments, setComments] =useState([]);
     const[openComments, setOpenComments] = useState(false);
     const[postCommentBody, setPostCommentBody] = useState('');
+    const[commentsPage, setCommentsPage] = useState(1);
+    const[isMoreArticles, setIsMoreArticles] = useState(false);
+    const[displayNewComment, setDisplayNewComment] = useState (false)
+    const[commentsCount, setCommentsCount] = useState (+article.comment_count)
 
     useEffect (() => {
-        getComments(article.article_id).then((response)=> {
-            setComments(response)
+        getComments(article.article_id, commentsPage).then((response)=> {
+            if(response<5) setIsMoreArticles(true)
+            setComments((currentComments) =>{
+                let array = [...currentComments]
+                return array.concat(response)
+            })
     })
-},[article.article_id, comments])
+    },[article.article_id, commentsPage])
 
     const handleSubmitNewComment = (event) =>{
         event.preventDefault();
-            postNewComment(user, postCommentBody, article.article_id)}
+        setCommentsCount((currentCount) => currentCount += 1)
+        setDisplayNewComment(true)
+        postNewComment(user, postCommentBody, article.article_id)}
 
-    function patchCommentsVotes(number, id, comment){
-        console.log(comment)
-        comment.votes += number
-        patchVotes('comments',id, number)
+    const moreComments = () => {
+        setCommentsPage((currentPage) => currentPage+1)
+        console.log(comments)
     }
 
-    function deleteComment(comment_id){
-        deleteItem('comments', comment_id)
-    }
+    const newComment = {created_at: new Date(), body:postCommentBody,author:user,votes:0}
 
     const toggleComments = () => setOpenComments((currentToggle) => !currentToggle)
 
     return (
-      <div>
-        <button onClick={toggleComments}>{article.comment_count} Comments</button>
-        {openComments? <ul>
+      <div className='Comments'>
+        <button onClick={toggleComments}>{commentsCount} Comments</button>
+        {openComments?<div>
             <form onSubmit={handleSubmitNewComment} id='postComment'>
                 <label htmlFor='postCommentBody'> Comment:
                     <input id='postCommentBody' type='text' required value={postCommentBody} onChange={(event) => {
                         setPostCommentBody(event.target.value)
                     }}/>
                 </label>
-                <button type="submit">Post a new comment</button>
+            <button type="submit">Post a new comment</button>
             </form>
-
+        <ul>
+        {displayNewComment? <div id="comment">
+            <p>{newComment.author}, now </p>
+            <p>{newComment.body} </p>
+            <p>{newComment.votes}</p>
+        </div>:null}   
         {comments.map((comment) => {
-            return (
-                <li key={comment.comment_id}>
-                <p>{comment.author} on {comment.created_at}</p>  
-                <p>{comment.body} </p>
-                <button onClick={()=>{patchCommentsVotes(1, comment.comment_id, comment)}}>Upvote</button>
-                <p>Upvotes:{comment.votes}</p>
-                <button onClick={()=>{patchCommentsVotes(-1, comment.comment_id, comment, comment.votes)}}>Downvote</button>
-                {user === comment.author? <button onClick={() => {deleteComment(comment.comment_id)}}>Delete comment</button>:null}
-                 </li>
-        )
-              })}
-            </ul> : null}
-        </div>
+         return (
+            <Comment comment={comment} user={user} setCommentsCount={setCommentsCount}/>
+            )})}          
+         <button disabled={isMoreArticles} onClick={() => {moreComments()}}>Load more comments</button>
+         </ul>  
+         </div>
+        : null}
+     </div>
     );
 };
 

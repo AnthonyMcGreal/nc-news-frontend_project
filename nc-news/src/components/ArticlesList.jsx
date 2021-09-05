@@ -5,20 +5,20 @@ import { getArticles, postNewArticle } from '../api';
 const ArticlesList = ({isLoggedIn, user}) => {
 
   const[articles,setArticles] = useState([]);
-  const[isNewArticleOpen, setIsNewArticleOpen] = useState(false)
-  const[postArticleTitle, setPostArticleTitle] = useState('')
-  const[postArticleBody, setPostArticleBody] =useState('')
+  const[isNewArticleOpen, setIsNewArticleOpen] = useState(false);
+  const[postArticleTitle, setPostArticleTitle] = useState('');
+  const[postArticleBody, setPostArticleBody] =useState('');
+  const[page, setPage] = useState(1);
+  const[order, setOrder] =useState('asc');
   const search = useLocation().search;
   const topic = new URLSearchParams(search).get('topic')
   const history = useHistory()
   
-
-
   useEffect(() => {
-      getArticles(topic).then((response)=>{
+      getArticles(topic, order, page).then((response)=>{
         setArticles(response)
       })
-  },[topic])
+  },[topic, order, page])
 
   if(!isLoggedIn) return <div>Please Log in to view this page</div>
   if(articles.length ===0 ) return 'Loading articles....'
@@ -30,10 +30,30 @@ const ArticlesList = ({isLoggedIn, user}) => {
 
   const toggleNewArticle = () => setIsNewArticleOpen((currentToggle) => !currentToggle)
 
+  const changeOrder = () => {
+    if (order === 'asc') {
+      setOrder('desc')
+    } else {
+      setOrder('asc')
+    }
+  }
+
+  const changePage = (value) => {
+    setPage((cPage) => {
+     return cPage + value
+    })
+  }
+
 
     return (
         <div className="ArticleList">
           <button onClick={() => history.push("/topics")}>Return to topics</button>
+          {order==='asc'?<button onClick={changeOrder}>Order by:Desc</button>:<button onClick={changeOrder}>Order by:Asc</button>}
+          <section>
+            <button disabled={page===1}onClick={() => {changePage(-1)}}> {'<'} </button>
+            {`Page ${page}`}
+            <button disabled={articles.length<5}onClick={() => {changePage(1)}}> {'>'} </button>
+          </section>
           <ul>
             {articles.map((article) => {
               return (
