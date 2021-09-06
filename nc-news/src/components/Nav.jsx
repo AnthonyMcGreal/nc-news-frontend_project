@@ -6,7 +6,7 @@ const history = useHistory()
     return (
         <div className="Nav">
               <button onClick={() => history.push("/home")}>Home</button>
-              <button onClick={() => history.push("/topics")}>Topics</button>
+              <button onClick={() => history.push("/topics")}>Articles</button>
               <button onClick={() => history.push("/users")}>Users</button>
         
             {user?<button onClick={() => {

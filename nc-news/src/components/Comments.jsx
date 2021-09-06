@@ -26,15 +26,16 @@ const Comments = ({article, user}) => {
         event.preventDefault();
         setCommentsCount((currentCount) => currentCount += 1)
         setDisplayNewComment(true)
-        postNewComment(user, postCommentBody, article.article_id)}
+        postNewComment(user, postCommentBody, article.article_id)
+        setPostCommentBody('')
+    }
 
     const moreComments = () => {
         setCommentsPage((currentPage) => currentPage+1)
-        console.log(comments)
     }
 
-    const newComment = {created_at: new Date(), body:postCommentBody,author:user,votes:0}
-
+    const newComment = {created_at: new Date().toString(), body:postCommentBody,author:user,votes:0}
+    
     const toggleComments = () => setOpenComments((currentToggle) => !currentToggle)
 
     return (
@@ -51,7 +52,7 @@ const Comments = ({article, user}) => {
             </form>
         <ul>
         {displayNewComment? <div id="comment">
-            <p>{newComment.author}, now </p>
+            <p>{newComment.author} on {newComment.created_at} </p>
             <p>{newComment.body} </p>
             <p>{newComment.votes}</p>
         </div>:null}   

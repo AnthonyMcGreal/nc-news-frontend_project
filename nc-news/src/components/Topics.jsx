@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory} from 'react-router-dom'
 import {getTopics, postNewTopic} from '../api'
 
 const Topics = ({isLoggedIn}) => {
@@ -8,6 +8,8 @@ const Topics = ({isLoggedIn}) => {
   const[isNewTopicOpen, setIsNewTopicOpen] = useState(false)
   const[postTopicSlug, setPostTopicSlug] = useState('')
   const[postTopicDescription, setPostTopicDescription] = useState('')
+
+  const history = useHistory()
 
   
   useEffect(() => {
@@ -18,6 +20,11 @@ const Topics = ({isLoggedIn}) => {
 
   const handleSubmit= (event) => {
     event.preventDefault();
+    setTopics((currentTopics) => {
+      let array = [...currentTopics]
+      array.push(event)
+      return array
+    })
     console.log()
     postNewTopic(postTopicSlug,postTopicDescription)
   }
@@ -28,6 +35,9 @@ const Topics = ({isLoggedIn}) => {
 
     return (
         <div className="Topics">
+          <section>
+            <button onClick={() => history.push(`/articlesList`)}>Browse all articles</button>
+          </section>
             <ul>
                 {topics.map((topic) => {
                     return (

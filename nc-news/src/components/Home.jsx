@@ -11,7 +11,6 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
             setUser(selection)
             setIsLoggedIn(true)
         })
-        
     }
     return (
         <div className="Home">
