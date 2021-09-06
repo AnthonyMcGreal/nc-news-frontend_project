@@ -35,7 +35,6 @@ const ArticlesList = ({isLoggedIn, user}) => {
   }
 
   const handleSortByChange = (sortby) => {
-    console.log('im in here')
     setSortby(sortby);
     getArticles(order, page, sortby, topic).then((response)=>{
     setArticles(response)
@@ -61,9 +60,6 @@ const ArticlesList = ({isLoggedIn, user}) => {
      return cPage + value
     })
   }
-
-console.log(articlePosted, '----articlePosted')
-console.log(isNewArticleOpen,'-----isNewArticleOpen')
 
     return (
         <div className="ArticleList">

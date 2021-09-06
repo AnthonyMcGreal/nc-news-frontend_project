@@ -22,10 +22,9 @@ const Topics = ({isLoggedIn}) => {
     event.preventDefault();
     setTopics((currentTopics) => {
       let array = [...currentTopics]
-      array.push(event)
+      array.push({slug:postTopicSlug, description:postTopicDescription})
       return array
     })
-    console.log()
     postNewTopic(postTopicSlug,postTopicDescription)
   }
   

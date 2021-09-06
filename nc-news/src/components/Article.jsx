@@ -30,11 +30,9 @@ const Article = ({isLoggedIn, user}) => {
 
   function deleteArticle(article_id){
     setIsArticleDeleted(true)
-    console.log(article_id)
     deleteItem('articles',article_id).then((response)=> {}).catch((error)=>console.log(error))
   }
 
-  console.log(articleVotes, typeof articleVotes)
   return (
     <div className="Article">
       {isArticleDeleted?<div>

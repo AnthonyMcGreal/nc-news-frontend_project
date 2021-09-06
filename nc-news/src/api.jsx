@@ -11,12 +11,10 @@ export function getArticles(order,page,sortby,topic){
     if(topic){
     return axios.get(`https://news-app-anthony-mcgreal.herokuapp.com/api/articles?topic=${topic}&order=${order}&limit=5&page=${page}&sort_by=${sortby}`)
     .then((response) => {
-        console.log(response)
         return response.data.articles
     })
 } else {return axios.get(`https://news-app-anthony-mcgreal.herokuapp.com/api/articles?order=${order}&limit=5&page=${page}&sort_by=${sortby}`)
 .then((response) => {
-    console.log(response)
     return response.data.articles
 })}}
 
@@ -53,7 +51,6 @@ export function postNewComment(username, commentBody, article_id){
         username:username,
         body:commentBody
     }).then((response)=> {
-        console.log(response)
         return response
     })  
 }
