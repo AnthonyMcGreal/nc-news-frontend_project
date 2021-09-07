@@ -50,18 +50,20 @@ const Comments = ({article, user}) => {
                 </label>
             <button type="submit">Post a new comment</button>
             </form>
-        <ul>
+       
         {displayNewComment? <div id="comment">
             <p>{newComment.author} on {newComment.created_at} </p>
             <p>{newComment.body} </p>
             <p>{newComment.votes}</p>
-        </div>:null}   
+        </div>:null} 
+        <ul>  
         {comments.map((comment) => {
-         return (
+         return (<li key={comment.comment_id} id="comment">
             <Comment comment={comment} user={user} setCommentsCount={setCommentsCount}/>
-            )})}          
-         <button disabled={isMoreArticles} onClick={() => {moreComments()}}>Load more comments</button>
-         </ul>  
+            </li>
+            )})} 
+        </ul>         
+         <button disabled={isMoreArticles} onClick={() => {moreComments()}}>Load more comments</button> 
          </div>
         : null}
      </div>

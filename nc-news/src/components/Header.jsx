@@ -5,6 +5,7 @@ const Header = ({user}) => {
     const history = useHistory()
     return (
         <div className="header">
+            <div className="header-wrap">
             <h1>NorthCoders News</h1>
             {user?
             <p>Currently logged in as : {user}</p>:
@@ -12,7 +13,7 @@ const Header = ({user}) => {
 
             {user? null: 
               <button onClick={() => history.push("/home")}>Login</button>}
-           
+           </div>
         </div>
     );
 };
