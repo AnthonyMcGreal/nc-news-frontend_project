@@ -9,9 +9,7 @@ const Header = ({user}) => {
             <h1>NorthCoders News</h1>
             {user?
             <p>Currently logged in as : {user}</p>:
-            <p>Please log in</p>}
-
-            {user? null: 
+            user? null: 
               <button onClick={() => history.push("/home")}>Login</button>}
            </div>
         </div>

@@ -13,9 +13,13 @@ ul {
   list-style-type: none;
 }
 
+.contentContainer {
+  height: 93%;
+}
+/* Header Styling */
 .header {
-  height: 3.4em;
-  width: 100vw;
+  height: 7%;
+  width: 100%;
   justify-content: center;
   background-color: rgb(62, 80, 98);
 }
@@ -29,7 +33,7 @@ ul {
 
 .header h1 {
   font-size: 1.2rem;
-  padding-left: 10px;
+  padding-left: 15px;
   background-color: rgb(62, 80, 98);
   color: rgb(236, 240, 245);
 }
@@ -39,16 +43,26 @@ ul {
   font-size: 14px;
   background-color: rgb(62, 80, 98);
   color: rgb(236, 240, 245);
+  margin-right: 15px;
 }
 
 .header button {
-  padding: 0;
-  margin: 0;
+  padding: 5px;
+  margin: 10px;
+  margin-right: 25px;
   right: 15px;
   top: 32px;
   background-color: rgb(62, 80, 98);
   color: rgb(236, 240, 245);
   border-radius: 10px;
+}
+
+/* Nav Styling */
+
+.left {
+  width: 100%;
+  height: 7%;
+  float: none;
 }
 
 .Nav {
@@ -60,16 +74,25 @@ ul {
 }
 
 .Nav button {
+  padding: 5px;
   background-color: rgb(62, 80, 98);
   color: rgb(236, 240, 245);
   border-radius: 10px;
 }
 
+/* Home Styling */
+
 .Home {
+  padding-top: 20px;
   color: rgb(62, 80, 98);
   height: 50%;
 }
+#users {
+  margin: 5px;
+}
 .Home button {
+  margin: 5px;
+  padding: 5px;
   background-color: rgb(62, 80, 98);
   color: rgb(236, 240, 245);
   border-radius: 10px;
@@ -78,11 +101,57 @@ ul {
   padding: 3em;
 }
 
+/* Topics Styling */
 .Topics {
-  border-color: blue;
-  border-width: 5px;
-  border-style: solid;
+  margin-top: 20px;
+  height: 80%;
+  overflow: visible;
 }
+
+.Topics button {
+  margin: 5px;
+  padding: 5px;
+  background-color: rgb(62, 80, 98);
+  color: rgb(236, 240, 245);
+  border-radius: 10px;
+}
+
+.Topics h1 {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+.topicsList {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.topicsList a {
+  width: 60%;
+  margin: 10px;
+  padding: 5px;
+  border-width: 2px;
+  border-color: rgb(62, 80, 98);
+  border-style: solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(62, 80, 98);
+  color: rgb(236, 240, 245);
+}
+
+.topicsList p {
+  margin: 3px;
+  background-color: rgb(62, 80, 98);
+  color: rgb(236, 240, 245);
+}
+
+/* Articles Styling */
 
 .ArticleList {
   border-color: Yellow;
@@ -98,9 +167,15 @@ ul {
   background-color: rgb(233, 243, 248);
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 650px) {
   .app {
     border: none;
+  }
+  .contentContainer {
+    width: 50%;
+    min-width: 560px;
+    height: 100vh;
+    margin: auto;
   }
   .header-wrap {
     width: 50%;
@@ -109,15 +184,41 @@ ul {
     border-right: 5px solid rgb(62, 80, 98);
   }
 
+  .left {
+    width: 20%;
+    height: 100vh;
+    float: left;
+  }
+
   .Nav {
-    width: 50%;
+    min-width: 115px;
+    height: 100%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     border-left: 5px solid rgb(62, 80, 98);
     border-right: 5px solid rgb(62, 80, 98);
+    background-color: rgb(62, 80, 98);
+  }
+  .Nav button {
+    height: 70px;
+    width: 70px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-color: rgb(236, 240, 245);
+    color: rgb(62, 80, 98);
   }
 
   .Home {
-    width: 50%;
+    margin: auto;
+    border-left: 5px solid rgb(62, 80, 98);
+    border-right: 5px solid rgb(62, 80, 98);
+    height: 100vh;
+  }
+  .Topics {
+    padding-top: 30px;
     margin: auto;
     border-left: 5px solid rgb(62, 80, 98);
     border-right: 5px solid rgb(62, 80, 98);

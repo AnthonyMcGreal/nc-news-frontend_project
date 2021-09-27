@@ -4,6 +4,7 @@ const Nav = ({user, setIsLoggedIn, setUser}) => {
 
 const history = useHistory()
     return (
+        <div className="left">
         <div className="Nav">
               <button onClick={() => history.push("/home")}>Home</button>
               <button onClick={() => history.push("/topics")}>Articles</button>
@@ -13,6 +14,7 @@ const history = useHistory()
                 setIsLoggedIn(false) 
                 setUser(null)}}
                 >Logout</button>:null}
+        </div>
         </div>
     );
 };

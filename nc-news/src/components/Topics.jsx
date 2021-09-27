@@ -34,20 +34,19 @@ const Topics = ({isLoggedIn}) => {
 
     return (
         <div className="Topics">
+          <h1>Choose A Topic To Browse Below</h1>
           <section>
             <button onClick={() => history.push(`/articlesList`)}>Browse all articles</button>
           </section>
-            <ul>
+            <section className="topicsList">
                 {topics.map((topic) => {
                     return (
-                    <li key={topic.slug}>
                         <Link to={`/articlesList?topic=${topic.slug}`}>
-                        {topic.slug}
+                        <p>{topic.slug}</p>
+                        <p>{topic.description}</p>
                         </Link>
-                        {topic.description}
-                    </li>
                 )})}
-            </ul>
+            </section>
 
          <button onClick={toggleNewTopic}>Post a new topic</button>
          {isNewTopicOpen? 
