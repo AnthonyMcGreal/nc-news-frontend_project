@@ -41,7 +41,7 @@ const Topics = ({isLoggedIn}) => {
             <section className="topicsList">
                 {topics.map((topic) => {
                     return (
-                        <Link to={`/articlesList?topic=${topic.slug}`}>
+                        <Link key={`${topic.slug}`}to={`/articlesList?topic=${topic.slug}`}>
                         <p>{topic.slug}</p>
                         <p>{topic.description}</p>
                         </Link>
@@ -50,15 +50,15 @@ const Topics = ({isLoggedIn}) => {
 
          <button onClick={toggleNewTopic}>Post a new topic</button>
          {isNewTopicOpen? 
-         <form onSubmit={handleSubmit} id='postTopicSlug'>
-         <label htmlFor='postTopicSlug'>Topic Name
+         <form onSubmit={handleSubmit} id='postNewTopic'>
+         <label htmlFor='postTopicSlug'>Topic Name : 
          <input id='postTopicSlug' type='text' required value={postTopicSlug} onChange={(event) => {
            setPostTopicSlug(event.target.value)
-         }}/></label>
-         <label htmlFor='postTopicDescription'>Topic description
+         }}/></label><br></br>
+         <label className="postTopicDescription" htmlFor='postTopicDescription'>Topic description : 
          <input id='postTopicDescription' type='text' required value={postTopicDescription} onChange={(event) => {
            setPostTopicDescription(event.target.value)
-         }}/></label>
+         }}/></label><br></br>
          <button type='submit'>Post topic</button>
          </form>:null}
         </div>

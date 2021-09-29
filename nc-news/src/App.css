@@ -16,7 +16,19 @@ ul {
 .contentContainer {
   height: 93%;
 }
+
+.left {
+  width: 100%;
+  height: 7%;
+  float: none;
+}
+
+.right {
+  height: 85%;
+}
+
 /* Header Styling */
+
 .header {
   height: 7%;
   width: 100%;
@@ -58,12 +70,6 @@ ul {
 }
 
 /* Nav Styling */
-
-.left {
-  width: 100%;
-  height: 7%;
-  float: none;
-}
 
 .Nav {
   padding: 0.4em;
@@ -151,6 +157,23 @@ ul {
   color: rgb(236, 240, 245);
 }
 
+#postNewTopic {
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+}
+
+#postTopicSlug {
+  margin-right: 20px;
+  margin-left: 4px;
+  margin-bottom: 4px;
+}
+
+#postTopicDescription {
+  margin-right: 10px;
+  margin-left: 4px;
+}
+
 /* Articles Styling */
 
 .ArticleList {
@@ -174,8 +197,11 @@ ul {
   .contentContainer {
     width: 50%;
     min-width: 560px;
-    height: 100vh;
+    height: 90vh;
     margin: auto;
+    display: grid;
+    grid-template-columns: [left]20% [right]80%;
+    grid-template-areas: 'left right';
   }
   .header-wrap {
     width: 50%;
@@ -185,13 +211,18 @@ ul {
   }
 
   .left {
-    width: 20%;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     float: left;
+  }
+
+  .right {
+    height: 100%;
   }
 
   .Nav {
     min-width: 115px;
+    padding: 0;
     height: 100%;
     margin: auto;
     display: flex;
@@ -220,8 +251,31 @@ ul {
   .Topics {
     padding-top: 30px;
     margin: auto;
+    height: 100%;
     border-left: 5px solid rgb(62, 80, 98);
     border-right: 5px solid rgb(62, 80, 98);
-    height: 100vh;
+    border-bottom: 5px solid rgb(62, 80, 98);
+  }
+
+  .topicsList {
+    height: 65%;
+  }
+
+  #postNewTopic {
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+    display: block;
+  }
+
+  #postTopicSlug {
+    margin-right: 20px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+  }
+
+  #postTopicDescription {
+    margin-right: 10px;
+    margin-left: 4px;
   }
 }

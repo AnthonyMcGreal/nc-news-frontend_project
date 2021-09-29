@@ -20,31 +20,33 @@ function App() {
         <Header user={user} />
         <div className="contentContainer">
           <Nav user={user} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
-          <Switch>
-            <Route exact path="/home">
-              <Home
-                setIsLoggedIn={setIsLoggedIn}
-                setUser={setUser}
-                isLoggedIn={isLoggedIn}
-                user={user}
-              />
-            </Route>
-            <Route exact path="/topics">
-              <Topics isLoggedIn={isLoggedIn} />
-            </Route>
-            <Route exact path="/users">
-              <Users isLoggedIn={isLoggedIn} />
-            </Route>
-            <Route exact path="/user">
-              <User isLoggedIn={isLoggedIn} />
-            </Route>
-            <Route exact path="/articlesList">
-              <ArticlesList isLoggedIn={isLoggedIn} user={user} />
-            </Route>
-            <Route exact path="/article">
-              <Article isLoggedIn={isLoggedIn} user={user} />
-            </Route>
-          </Switch>
+          <div className="right">
+            <Switch>
+              <Route exact path="/home">
+                <Home
+                  setIsLoggedIn={setIsLoggedIn}
+                  setUser={setUser}
+                  isLoggedIn={isLoggedIn}
+                  user={user}
+                />
+              </Route>
+              <Route exact path="/topics">
+                <Topics isLoggedIn={isLoggedIn} />
+              </Route>
+              <Route exact path="/users">
+                <Users isLoggedIn={isLoggedIn} />
+              </Route>
+              <Route exact path="/user">
+                <User isLoggedIn={isLoggedIn} />
+              </Route>
+              <Route exact path="/articlesList">
+                <ArticlesList isLoggedIn={isLoggedIn} user={user} />
+              </Route>
+              <Route exact path="/article">
+                <Article isLoggedIn={isLoggedIn} user={user} />
+              </Route>
+            </Switch>
+          </div>
         </div>
       </div>
     </BrowserRouter>
