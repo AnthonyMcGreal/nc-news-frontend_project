@@ -25,7 +25,7 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
                     <option value='weegembump'>weegembump</option>
                     <option value='jessjelly'>jessjelly</option>
                 </select>
-                <button onClick={login}>Login</button>
+                <button disabled={selection===''}onClick={login}>Login</button>
             </label>
             }
            {isLoggedIn? <p>Welcome back {user}!</p>:<p>Welcome to NorthCoders News</p>}

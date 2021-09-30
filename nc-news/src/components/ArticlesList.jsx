@@ -75,9 +75,9 @@ const ArticlesList = ({isLoggedIn, user}) => {
             </select>
           {order ==='asc'?<button className="articlesListOrderByButton" onClick={changeOrder}>Order by : Desc</button>:<button className="articlesListOrderByButton" onClick={changeOrder}>Order by : Asc</button>}
           <section>
-            <button disabled={page===1} onClick={() => {changePage(-1)}}> {'<'} </button>
+            <button hidden={page===1} disabled={page===1} onClick={() => {changePage(-1)}}> {'<'} </button>
             {`Page ${page}`}
-            <button disabled={articles.length<5} onClick={() => {changePage(1)}}> {'>'} </button>
+            <button hidden={articles.length<5} disabled={articles.length<5} onClick={() => {changePage(1)}}> {'>'} </button>
           </section>
           <section className="articleLinks">
             {articles.map((article) => {
