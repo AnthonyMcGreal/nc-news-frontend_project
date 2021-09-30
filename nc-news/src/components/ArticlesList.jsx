@@ -79,16 +79,14 @@ const ArticlesList = ({isLoggedIn, user}) => {
             {`Page ${page}`}
             <button disabled={articles.length<5} onClick={() => {changePage(1)}}> {'>'} </button>
           </section>
-          <ul>
+          <section className="articleLinks">
             {articles.map((article) => {
               return (
-                <li key={article.article_id}>
-                <Link to={`/article?article_id=${article.article_id}`}>
+                <Link key={article.article_id} to={`/article?article_id=${article.article_id}`}>
                   {article.title}
                 </Link>
-              </li>
-              )})}
-          </ul>  
+              )})} 
+          </section>
           </div>
 
           <button onClick={toggleNewArticle}>Post a new article</button>
