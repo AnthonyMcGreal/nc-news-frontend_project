@@ -2,7 +2,7 @@
   text-align: center;
   min-height: 810px;
   min-width: 350px;
-  /* background-image: url('/AZ2140.jpg'); */
+  background-color: rgb(236, 240, 245);
   overflow: scroll;
   border-color: rgb(62, 80, 98);
   border-width: 5px;
@@ -241,6 +241,20 @@ ul {
   display: block;
   margin: auto;
   margin-top: 5px;
+  width: 80%;
+  font-size: medium;
+}
+
+#postArticleTitleText {
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+  width: 80%;
+  font-size: medium;
+  color: rgb(62, 80, 98);
+  background-color: rgb(255, 255, 255);
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
 }
 
 #postArticleBody {
@@ -248,11 +262,26 @@ ul {
   margin: auto;
   margin-top: 5px;
   font-size: medium;
+  width: 90%;
+  height: 100px;
+}
+
+#postArticleBodyText {
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+  font-size: medium;
+  width: 90%;
+  height: 80px;
+  color: rgb(62, 80, 98);
+  background-color: rgb(255, 255, 255);
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
 }
 
 #sort_by {
   color: rgb(62, 80, 98);
-  background-color: rgb(236, 240, 245);
+  background-color: rgb(255, 255, 255);
   border: rgb(62, 80, 98) 2px solid;
   border-radius: 10px;
 }
@@ -340,6 +369,7 @@ ul {
 @media only screen and (min-width: 769px) {
   .app {
     border: none;
+    background-image: url('../src/pics/background.jpg');
   }
   .contentContainer {
     width: 50%;
@@ -413,8 +443,8 @@ ul {
   }
 
   .ArticleList {
-    height: 90%;
-    grid-template-rows: [row1]8% 4% 4% 8% 8% auto;
+    height: 80%;
+    grid-template-rows: [row1]10% 6% 6% 10% 10%;
   }
 
   #postNewTopic {
@@ -433,5 +463,13 @@ ul {
   #postTopicDescription {
     margin-right: 10px;
     margin-left: 4px;
+  }
+  #postArticleBody {
+    display: block;
+    margin-bottom: 3px;
+  }
+  #postArticleBodyText {
+    display: block;
+    margin-bottom: 3px;
   }
 }

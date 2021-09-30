@@ -93,11 +93,11 @@ const ArticlesList = ({isLoggedIn, user}) => {
           {isNewArticleOpen? 
           <form onSubmit={handleSubmitArticle} id='postArticle'>
             <label htmlFor='postArticleTitle' id='postArticleTitle'>Title
-            <input id='postArticleTitle' type='text' required value={postArticleTitle} onChange={(event) => {
+            <input id='postArticleTitleText' type='text' required value={postArticleTitle} onChange={(event) => {
               setPostArticleTitle(event.target.value)
             }}/></label>
             <label htmlFor='postArticleBody' id='postArticleBody'>Article
-            <input id='postArticleBody' type='text' required value={postArticleBody} onChange={(event) => {
+            <textarea id='postArticleBodyText' type='text' required value={postArticleBody} onChange={(event) => {
               setPostArticleBody(event.target.value)
             }}/></label>
             <button type='submit'>Post article</button>
