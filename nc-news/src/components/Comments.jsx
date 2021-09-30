@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import { getComments, postNewComment } from '../api';
 import Comment from './Comment'
+import moment from 'moment';
 
 const Comments = ({article, user}) => {
     
@@ -40,10 +41,11 @@ const Comments = ({article, user}) => {
 
     return (
       <div className='Comments'>
-        <button onClick={toggleComments}>{commentsCount} Comments</button>
+          
+        {openComments?<button onClick={toggleComments}>Hide Comments</button>:<button onClick={toggleComments}>View Comments ({commentsCount})</button>}
         {openComments?<div>
             <form onSubmit={handleSubmitNewComment} id='postComment'>
-                <label htmlFor='postCommentBody'> Comment:
+                <label htmlFor='postCommentBody'> New comment : 
                     <input id='postCommentBody' type='text' required value={postCommentBody} onChange={(event) => {
                         setPostCommentBody(event.target.value)
                     }}/>
@@ -52,7 +54,7 @@ const Comments = ({article, user}) => {
             </form>
        
         {displayNewComment? <div id="comment">
-            <p>{newComment.author} on {newComment.created_at} </p>
+            <p>{newComment.author} on {moment.utc(`${newComment.created_at}`).format('DD/MM/YY')} </p>
             <p>{newComment.body} </p>
             <p>{newComment.votes}</p>
         </div>:null} 

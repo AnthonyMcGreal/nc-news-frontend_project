@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import { useLocation, useHistory} from 'react-router-dom';
 import { deleteItem, getArticle, patchVotes} from '../api';
 import Comments from './Comments';
+import moment from 'moment';
 
 const Article = ({isLoggedIn, user}) => {
 
@@ -41,7 +42,7 @@ const Article = ({isLoggedIn, user}) => {
       <h2>{article.title}</h2> 
       <h3>Written by: {article.author}</h3>
       {user === article.author? <button onClick={() => {deleteArticle(article.article_id)}}>Delete article</button>:null}
-      <h4>Created on: {article.created_at}</h4>
+      <h4>Created on: {moment.utc(`${article.created_at}`).format('DD/MM/YY')}</h4>
       <p>{article.body}</p>
       <p>Upvotes:{articleVotes}</p>
       <button disabled={hasVotedArticle} onClick={()=>{patchArticleVotes(1)}}>Upvote</button>

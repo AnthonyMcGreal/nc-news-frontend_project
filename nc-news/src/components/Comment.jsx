@@ -1,5 +1,6 @@
 import {patchVotes, deleteItem} from '../api'
 import {useState} from 'react'
+import moment from 'moment';
 
 const Comment = ({comment, user, setCommentsCount}) => {
 
@@ -24,7 +25,7 @@ const Comment = ({comment, user, setCommentsCount}) => {
         <section>
             {commentDeleted?
             "The comment has been deleted":<section>
-                <p>{comment.author} on {comment.created_at}</p>  
+                <p>{comment.author} on {moment.utc(`${comment.created_at}`).format('DD/MM/YY')}</p>  
                 <p>{comment.body} </p>
                 <p>Upvotes : {upvotes}</p>
                 <button disabled={hasVoted}onClick={()=>{patchCommentsVotes(1, comment.comment_id, comment)}}>Upvote</button>
