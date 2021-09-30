@@ -39,12 +39,14 @@ ul {
 .header {
   height: 7%;
   width: 100%;
+  padding: 2px;
   justify-content: center;
   background-color: rgb(62, 80, 98);
 }
 
 .header-wrap {
   display: flex;
+  height: 55px;
   justify-content: space-between;
   background-color: rgb(62, 80, 98);
   align-items: center;
@@ -154,14 +156,14 @@ ul {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgb(62, 80, 98);
-  color: rgb(236, 240, 245);
+  background-color: rgb(255, 255, 255);
+  color: rgb(62, 80, 98);
 }
 
 .topicsList p {
   margin: 3px;
-  background-color: rgb(62, 80, 98);
-  color: rgb(236, 240, 245);
+  background-color: rgb(255, 255, 255);
+  color: rgb(62, 80, 98);
 }
 
 #postNewTopic {

@@ -14,6 +14,7 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
     }
     return (
         <div className="Home">
+            {isLoggedIn? null:
             <label htmlFor='users'>Please log in as a user
                 <select onChange={(event) => {setSelection(event.target.value)}} name='users' id='users'>
                     <option disabled={selection === ''? false:true}value={selection}>Select a user</option>
@@ -26,6 +27,7 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
                 </select>
                 <button onClick={login}>Login</button>
             </label>
+            }
            {isLoggedIn? <p>Welcome back {user}!</p>:<p>Welcome to NorthCoders News</p>}
            {isLoggedIn? null:<p>Login to access all the juicy news</p>}
         </div>
