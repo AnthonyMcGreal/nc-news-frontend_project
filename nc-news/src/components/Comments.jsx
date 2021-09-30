@@ -38,7 +38,7 @@ const Comments = ({article, user}) => {
     const newComment = {created_at: new Date().toString(), body:postCommentBody,author:user,votes:0}
     
     const toggleComments = () => setOpenComments((currentToggle) => !currentToggle)
-
+    
     return (
       <div className='Comments'>
           
@@ -65,7 +65,8 @@ const Comments = ({article, user}) => {
             </li>
             )})} 
         </ul>         
-         <button disabled={isMoreArticles} onClick={() => {moreComments()}}>Load more comments</button> 
+         <button hidden={isMoreArticles} disabled={isMoreArticles} onClick={() => {moreComments()}}>Load more comments</button> 
+         {isMoreArticles? <p>No more comments</p>: null}
          </div>
         : null}
      </div>

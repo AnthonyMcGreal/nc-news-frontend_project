@@ -246,6 +246,14 @@ ul {
   display: block;
   margin: auto;
   margin-top: 5px;
+  font-size: medium;
+}
+
+#sort_by {
+  color: rgb(62, 80, 98);
+  background-color: rgb(236, 240, 245);
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
 }
 
 /* Article Styling */
