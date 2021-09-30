@@ -2,7 +2,7 @@
   text-align: center;
   min-height: 810px;
   min-width: 350px;
-  background-color: rgb(236, 240, 245);
+  /* background-image: url('/AZ2140.jpg'); */
   overflow: scroll;
   border-color: rgb(62, 80, 98);
   border-width: 5px;
@@ -32,6 +32,7 @@ ul {
 
 .right {
   height: 85%;
+  background-color: rgb(236, 240, 245);
 }
 
 /* Header Styling */
