@@ -62,40 +62,43 @@ const ArticlesList = ({isLoggedIn, user}) => {
   }
 
     return (
-        <div className="ArticleList">
-          <button onClick={() => history.push("/topics")}>Return to topics</button>
-          {order==='asc'?<button onClick={changeOrder}>Order by:Desc</button>:<button onClick={changeOrder}>Order by:Asc</button>}
-          <label htmlFor="sort_by"> Sort results</label>
+        <div className="articleListContainer">
+          <div className="ArticleList">
+
+          <button className="articlesListReturnButton"onClick={() => history.push("/topics")}>Return to topics</button>
+          <label htmlFor="sort_by"> Sort results by :</label>
           <select onChange={(event) => {handleSortByChange(event.target.value)}} name="sort_by" id="sort_by">
             <option value="created_at">Date created</option>
             <option value="author">Author</option>
             <option value="votes">Votes</option>
             <option value="title">Title</option>
             </select>
+          {order ==='asc'?<button className="articlesListOrderByButton" onClick={changeOrder}>Order by : Desc</button>:<button className="articlesListOrderByButton" onClick={changeOrder}>Order by : Asc</button>}
           <section>
-            <button disabled={page===1}onClick={() => {changePage(-1)}}> {'<'} </button>
+            <button disabled={page===1} onClick={() => {changePage(-1)}}> {'<'} </button>
             {`Page ${page}`}
-            <button disabled={articles.length<5}onClick={() => {changePage(1)}}> {'>'} </button>
+            <button disabled={articles.length<5} onClick={() => {changePage(1)}}> {'>'} </button>
           </section>
           <ul>
             {articles.map((article) => {
               return (
-              <li key={article.article_id}>
+                <li key={article.article_id}>
                 <Link to={`/article?article_id=${article.article_id}`}>
                   {article.title}
                 </Link>
               </li>
               )})}
-          </ul>
+          </ul>  
+          </div>
 
           <button onClick={toggleNewArticle}>Post a new article</button>
           {isNewArticleOpen? 
           <form onSubmit={handleSubmitArticle} id='postArticle'>
-            <label htmlFor='postArticleTitle'>Title
+            <label htmlFor='postArticleTitle' id='postArticleTitle'>Title
             <input id='postArticleTitle' type='text' required value={postArticleTitle} onChange={(event) => {
               setPostArticleTitle(event.target.value)
             }}/></label>
-            <label htmlFor='postArticleBody'>Article
+            <label htmlFor='postArticleBody' id='postArticleBody'>Article
             <input id='postArticleBody' type='text' required value={postArticleBody} onChange={(event) => {
               setPostArticleBody(event.target.value)
             }}/></label>

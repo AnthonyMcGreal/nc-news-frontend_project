@@ -26,8 +26,8 @@ const Comment = ({comment, user, setCommentsCount}) => {
             "The comment has been deleted":<section>
                 <p>{comment.author} on {comment.created_at}</p>  
                 <p>{comment.body} </p>
-                <button disabled={hasVoted}onClick={()=>{patchCommentsVotes(1, comment.comment_id, comment)}}>Upvote</button>
                 <p>Upvotes : {upvotes}</p>
+                <button disabled={hasVoted}onClick={()=>{patchCommentsVotes(1, comment.comment_id, comment)}}>Upvote</button>
                 <button disabled={hasVoted}onClick={()=>{patchCommentsVotes(-1, comment.comment_id, comment, comment.votes)}}>Downvote</button>
                 {user === comment.author? <button onClick={() => {deleteComment(comment.comment_id)}}>Delete comment</button>:null}
                 </section>}

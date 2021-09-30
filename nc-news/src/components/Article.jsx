@@ -43,8 +43,8 @@ const Article = ({isLoggedIn, user}) => {
       {user === article.author? <button onClick={() => {deleteArticle(article.article_id)}}>Delete article</button>:null}
       <h4>Created on: {article.created_at}</h4>
       <p>{article.body}</p>
-      <button disabled={hasVotedArticle} onClick={()=>{patchArticleVotes(1)}}>Upvote</button>
       <p>Upvotes:{articleVotes}</p>
+      <button disabled={hasVotedArticle} onClick={()=>{patchArticleVotes(1)}}>Upvote</button>
       <button disabled={hasVotedArticle} onClick={()=>{patchArticleVotes(-1)}}>Downvote</button>
       <Comments article={article} user={user}/>
       </section>}

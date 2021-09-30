@@ -1,12 +1,19 @@
 .app {
   text-align: center;
-  height: 100vh;
+  min-height: 810px;
   min-width: 350px;
   background-color: rgb(236, 240, 245);
   overflow: scroll;
   border-color: rgb(62, 80, 98);
   border-width: 5px;
   border-style: solid;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
 }
 
 ul {
@@ -174,21 +181,96 @@ ul {
   margin-left: 4px;
 }
 
-/* Articles Styling */
+/* ArticlesList Styling */
+
+.articleListContainer button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: rgb(62, 80, 98);
+  color: rgb(236, 240, 245);
+  border-radius: 10px;
+}
 
 .ArticleList {
-  border-color: Yellow;
-  border-width: 5px;
-  border-style: solid;
-}
-#comment {
-  border: 1px solid black;
+  display: grid;
+  width: 90%;
   margin: auto;
-  margin-top: 4px;
-  width: 95%;
+  color: rgb(62, 80, 98);
+}
+
+.articlesListReturnButton {
+  width: 40%;
+  margin: auto;
+  justify-self: center;
+}
+
+.articlesListOrderByButton {
+  width: 40%;
+  margin: auto;
+  justify-self: center;
+}
+
+.ArticleList li {
+  border: rgb(62, 80, 98) 1px solid;
   border-radius: 5px;
   background-color: rgb(233, 243, 248);
+  margin: 10px;
+  padding: 10px;
+  color: rgb(62, 80, 98);
 }
+
+#postArticle {
+  width: 90%;
+  margin: auto;
+}
+
+#postArticleTitle {
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+}
+
+#postArticleBody {
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+}
+
+/* Article Styling */
+.Article {
+  width: 95%;
+  margin: auto;
+}
+.Article button {
+  margin: 10px;
+  padding: 5px;
+  background-color: rgb(62, 80, 98);
+  color: rgb(236, 240, 245);
+  border-radius: 10px;
+}
+
+.Article p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#comment {
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+#comment button {
+  margin: 10px;
+  padding: 5px;
+  background-color: rgb(62, 80, 98);
+  color: rgb(236, 240, 245);
+  border-radius: 10px;
+}
+
+/* Desktop styling */
 
 @media only screen and (min-width: 650px) {
   .app {
@@ -218,6 +300,9 @@ ul {
 
   .right {
     height: 100%;
+    border-left: 5px solid rgb(62, 80, 98);
+    border-right: 5px solid rgb(62, 80, 98);
+    border-bottom: 5px solid rgb(62, 80, 98);
   }
 
   .Nav {
@@ -252,13 +337,19 @@ ul {
     padding-top: 30px;
     margin: auto;
     height: 100%;
-    border-left: 5px solid rgb(62, 80, 98);
-    border-right: 5px solid rgb(62, 80, 98);
-    border-bottom: 5px solid rgb(62, 80, 98);
   }
 
   .topicsList {
     height: 65%;
+  }
+
+  .articleListContainer {
+    height: 80%;
+  }
+
+  .ArticleList {
+    height: 90%;
+    grid-template-rows: [row1]8% 4% 4% 8% 8% auto;
   }
 
   #postNewTopic {
