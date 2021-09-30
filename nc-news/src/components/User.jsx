@@ -1,12 +1,13 @@
 import {useState, useEffect} from 'react'
-import { useLocation } from 'react-router-dom';
 import { getUser } from '../api';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const User = ({isLoggedIn}) => {
 
     const [userProfile, setUserProfile] = useState([{}])
     const search = useLocation().search;
     const username = new URLSearchParams(search).get('username')
+    const history = useHistory()
     
     useEffect(()=>{
        getUser(username).then((response)=> {
@@ -17,10 +18,11 @@ const User = ({isLoggedIn}) => {
     if(!userProfile[0].hasOwnProperty('username'))return 'Loading profile....'
 
     return (
-        <div>
-          <h3>{userProfile[0].username}</h3>
+        <div className="userProfile">
+          <button className="userReturnButton"onClick={() => history.push("/users")}>Return to users</button>
           <img src={userProfile[0].avatar_url} alt='avatar'/>
-          <p>{userProfile[0].name}</p>
+          <h3>Username : {userProfile[0].username}</h3>
+          <p>Name : {userProfile[0].name}</p>
         </div>
     );
 };

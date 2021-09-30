@@ -212,9 +212,9 @@ ul {
 }
 
 .ArticleList li {
-  border: rgb(62, 80, 98) 1px solid;
+  border: rgb(62, 80, 98) 2px solid;
   border-radius: 5px;
-  background-color: rgb(233, 243, 248);
+  background-color: rgb(255, 255, 255);
   margin: 10px;
   padding: 10px;
   color: rgb(62, 80, 98);
@@ -255,6 +255,8 @@ ul {
   margin-bottom: 10px;
 }
 
+/* Comments styling */
+
 #comment {
   border: rgb(62, 80, 98) 2px solid;
   border-radius: 10px;
@@ -271,9 +273,51 @@ ul {
   border-radius: 10px;
 }
 
+/* Users Styling */
+
+.users {
+  padding-top: 50px;
+}
+
+.user {
+  display: block;
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+/* User Profile Styling */
+
+.userProfile {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  color: rgb(62, 80, 98);
+}
+
+.userProfile img {
+  width: 300px;
+  height: 300px;
+}
+
+.userProfile button {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: rgb(62, 80, 98);
+  color: rgb(236, 240, 245);
+  border-radius: 10px;
+}
+
 /* Desktop styling */
 
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 769px) {
   .app {
     border: none;
   }

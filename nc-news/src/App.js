@@ -22,7 +22,7 @@ function App() {
           <Nav user={user} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
           <div className="right">
             <Switch>
-              <Route exact path="/home">
+              <Route exact path="/">
                 <Home
                   setIsLoggedIn={setIsLoggedIn}
                   setUser={setUser}

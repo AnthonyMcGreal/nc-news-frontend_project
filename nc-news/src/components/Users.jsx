@@ -15,17 +15,13 @@ const Users = ({isLoggedIn}) => {
     if(users.length ===0) return 'Loading Users....'
 
     return (
-        <div>
-            <ul>
+        <div className="users">
                 {users.map((user) => {
                     return (
-                        <li key={user.username}>
-                            <Link to={`/user?username=${user.username}`}>
+                            <Link key={user.username} className="user" to={`/user?username=${user.username}`}>
                             {user.username}
                             </Link>
-                        </li>
                     )})}
-            </ul>
         </div>
     );
 };

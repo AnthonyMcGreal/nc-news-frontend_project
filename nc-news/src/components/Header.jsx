@@ -10,7 +10,7 @@ const Header = ({user}) => {
             {user?
             <p>Currently logged in as : {user}</p>:
             user? null: 
-              <button onClick={() => history.push("/home")}>Login</button>}
+              <button onClick={() => history.push("/")}>Login</button>}
            </div>
         </div>
     );
