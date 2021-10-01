@@ -8,7 +8,7 @@
 
 ## Summary
 
-This project is designed to work with my Back End project created a few weeks ago. It is a small 'news' website that displays user articles about various topics. Users have the ability to post new topics, articles and comments on each article. Users are also able to 'upvote' other comments or articles too.
+This project is designed to work with the Back End project I created a few weeks ago. It is a small 'news' website that displays user articles about various topics. Users have the ability to post new topics, articles and comments on each article. Users are also able to 'upvote' other comments or articles too.
 
 ---
 
