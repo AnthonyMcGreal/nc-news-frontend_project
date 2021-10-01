@@ -9,7 +9,6 @@ import Article from './components/Article';
 import Users from './components/Users';
 import User from './components/User';
 import Home from './components/Home';
-import background from '../src/pics/background.jpg';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

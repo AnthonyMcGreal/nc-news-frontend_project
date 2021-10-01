@@ -170,18 +170,29 @@ ul {
 #postNewTopic {
   width: 90%;
   margin: auto;
+  margin-top: 10px;
   justify-content: center;
 }
 
 #postTopicSlug {
-  margin-right: 20px;
-  margin-left: 4px;
-  margin-bottom: 4px;
+  display: block;
+  margin: auto;
+  width: 80%;
+  color: rgb(62, 80, 98);
+  background-color: rgb(255, 255, 255);
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
 }
 
 #postTopicDescription {
-  margin-right: 10px;
-  margin-left: 4px;
+  display: block;
+  margin: auto;
+  width: 90%;
+  height: 60px;
+  color: rgb(62, 80, 98);
+  background-color: rgb(255, 255, 255);
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
 }
 
 /* ArticlesList Styling */
@@ -322,6 +333,19 @@ ul {
   border-radius: 10px;
 }
 
+#postCommentBody {
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+  width: 100%;
+  height: 80px;
+  font-size: medium;
+  color: rgb(62, 80, 98);
+  background-color: rgb(255, 255, 255);
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
+}
+
 /* Users Styling */
 
 .users {
@@ -435,7 +459,7 @@ ul {
   }
 
   .topicsList {
-    height: 65%;
+    height: 55%;
   }
 
   .articleListContainer {
@@ -455,14 +479,11 @@ ul {
   }
 
   #postTopicSlug {
-    margin-right: 20px;
-    margin-left: 4px;
-    margin-bottom: 4px;
+    margin: auto;
   }
 
   #postTopicDescription {
-    margin-right: 10px;
-    margin-left: 4px;
+    margin: auto;
   }
   #postArticleBody {
     display: block;

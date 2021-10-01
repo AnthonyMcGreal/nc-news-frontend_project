@@ -92,11 +92,11 @@ const ArticlesList = ({isLoggedIn, user}) => {
           <button onClick={toggleNewArticle}>Post a new article</button>
           {isNewArticleOpen? 
           <form onSubmit={handleSubmitArticle} id='postArticle'>
-            <label htmlFor='postArticleTitle' id='postArticleTitle'>Title
+            <label htmlFor='postArticleTitleText' id='postArticleTitle'>Title
             <input id='postArticleTitleText' type='text' required value={postArticleTitle} onChange={(event) => {
               setPostArticleTitle(event.target.value)
             }}/></label>
-            <label htmlFor='postArticleBody' id='postArticleBody'>Article
+            <label htmlFor='postArticleBodyText' id='postArticleBody'>Article
             <textarea id='postArticleBodyText' type='text' required value={postArticleBody} onChange={(event) => {
               setPostArticleBody(event.target.value)
             }}/></label>

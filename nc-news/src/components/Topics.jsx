@@ -51,14 +51,14 @@ const Topics = ({isLoggedIn}) => {
          <button onClick={toggleNewTopic}>Post a new topic</button>
          {isNewTopicOpen? 
          <form onSubmit={handleSubmit} id='postNewTopic'>
-         <label htmlFor='postTopicSlug'>Topic Name : 
+         <label className="postTopicSlugLabel" htmlFor='postTopicSlug'>Topic Name : 
          <input id='postTopicSlug' type='text' required value={postTopicSlug} onChange={(event) => {
            setPostTopicSlug(event.target.value)
-         }}/></label><br></br>
-         <label className="postTopicDescription" htmlFor='postTopicDescription'>Topic description : 
-         <input id='postTopicDescription' type='text' required value={postTopicDescription} onChange={(event) => {
+         }}/></label>
+         <label className="postTopicDescriptionLabel" htmlFor='postTopicDescription'>Topic description : 
+         <textarea id='postTopicDescription' type='text' required value={postTopicDescription} onChange={(event) => {
            setPostTopicDescription(event.target.value)
-         }}/></label><br></br>
+         }}/></label>
          <button type='submit'>Post topic</button>
          </form>:null}
         </div>

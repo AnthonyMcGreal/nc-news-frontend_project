@@ -28,8 +28,8 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
                 <button disabled={selection===''}onClick={login}>Login</button>
             </label>
             }
-           {isLoggedIn? <p>Welcome back {user}!</p>:<p>Welcome to NorthCoders News</p>}
-           {isLoggedIn? null:<p>Login to access all the juicy news</p>}
+           {isLoggedIn? <section><p>Welcome back {user}!</p> <p>Use the navigation bar to browse through the site and explore lots of user generated content.</p></section>:<p>Welcome to NorthCoders News</p>}
+           {isLoggedIn? null:<p>Login to access all the juicy articles</p>}
         </div>
     );
 };

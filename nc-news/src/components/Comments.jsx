@@ -45,8 +45,8 @@ const Comments = ({article, user}) => {
         {openComments?<button onClick={toggleComments}>Hide Comments</button>:<button onClick={toggleComments}>View Comments ({commentsCount})</button>}
         {openComments?<div>
             <form onSubmit={handleSubmitNewComment} id='postComment'>
-                <label htmlFor='postCommentBody'> New comment : 
-                    <input id='postCommentBody' type='text' required value={postCommentBody} onChange={(event) => {
+                <label className="postCommentBodyLabel" htmlFor='postCommentBody'> New comment : 
+                    <textarea id='postCommentBody' type='text' required value={postCommentBody} onChange={(event) => {
                         setPostCommentBody(event.target.value)
                     }}/>
                 </label>
