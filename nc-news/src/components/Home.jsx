@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { getUser } from '../api';
+import { useEffect } from 'react/cjs/react.development';
+import { getUser, getQod } from '../api';
 
 const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
 
     const [selection, setSelection]= useState('')
+    const [quote, setQuote] = useState('')
     
 
     function login(){
@@ -12,6 +14,11 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
             setIsLoggedIn(true)
         })
     }
+    useEffect(() => {
+        getQod().then((response) => {
+            setQuote(response)
+    })
+    },[])
     return (
         <div className="Home">
             {isLoggedIn? null:
@@ -28,7 +35,13 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
                 <button disabled={selection===''}onClick={login}>Login</button>
             </label>
             }
-           {isLoggedIn? <section><p>Welcome back {user}!</p> <p>Use the navigation bar to browse through the site and explore lots of user generated content.</p></section>:<p>Welcome to NorthCoders News</p>}
+           {isLoggedIn? <section>
+                <p>Welcome back {user}!</p> 
+                <section id="quote">
+                <p className="quoteTitle">Random quote of the day</p>
+                <p className="quote">"{quote}"</p>
+                </section>
+                <p>Use the navigation bar to browse through the site and explore lots of user generated content.</p></section>:<p>Welcome to NorthCoders News</p>}
            {isLoggedIn? null:<p>Login to access all the juicy articles</p>}
         </div>
     );

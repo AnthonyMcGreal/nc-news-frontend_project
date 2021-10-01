@@ -117,6 +117,23 @@ ul {
   padding: 3em;
 }
 
+#quote {
+  width: 90%;
+  margin: auto;
+  color: rgb(62, 80, 98);
+  background-color: rgb(255, 255, 255);
+  border: rgb(62, 80, 98) 2px solid;
+  border-radius: 10px;
+}
+p.quoteTitle {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+p.quote {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
 /* Topics Styling */
 .Topics {
   margin-top: 20px;

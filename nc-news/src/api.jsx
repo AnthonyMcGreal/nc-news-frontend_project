@@ -86,3 +86,10 @@ export function patchVotes(patchLocation,id,votes){
 export function deleteItem(deletePath,id){
     return axios.delete(`https://news-app-anthony-mcgreal.herokuapp.com/api/${deletePath}/${id}`)
 }
+
+export function getQod(){
+    return axios.get('http://quotes.rest/qod')
+    .then((response) => {
+        return response.data.contents.quotes[0].quote
+    })
+}
