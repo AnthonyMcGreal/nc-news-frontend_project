@@ -88,7 +88,7 @@ export function deleteItem(deletePath,id){
 }
 
 export function getQod(){
-    return axios.get('http://quotes.rest/qod')
+    return axios.get('https://quotes.rest/qod')
     .then((response) => {
         return response.data.contents.quotes[0].quote
     })

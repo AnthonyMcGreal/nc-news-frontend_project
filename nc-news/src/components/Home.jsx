@@ -13,6 +13,7 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
             setIsLoggedIn(true)
         })
     }
+    
     useEffect(() => {
         getQod().then((response) => {
             setQuote(response)
