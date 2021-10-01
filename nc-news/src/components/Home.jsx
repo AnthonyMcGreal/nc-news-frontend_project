@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import { useState, useEffect  } from 'react';
 import { getUser, getQod } from '../api';
 
 const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
@@ -19,6 +18,7 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
             setQuote(response)
     })
     },[])
+
     return (
         <div className="Home">
             {isLoggedIn? null:
