@@ -2,7 +2,7 @@
 
 ## Link to hosted site
 
-\*\*link
+https://loving-jackson-9ef6b2.netlify.app/
 
 ---
 
