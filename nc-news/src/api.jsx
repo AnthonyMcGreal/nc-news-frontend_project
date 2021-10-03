@@ -90,6 +90,6 @@ export function deleteItem(deletePath,id){
 export function getQod(){
     return axios.get('https://quotes.rest/qod')
     .then((response) => {
-        return response.data.contents.quotes[0].quote
+        return response.data.contents.quotes[0]
     })
 }

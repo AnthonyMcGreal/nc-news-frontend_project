@@ -5,6 +5,7 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
 
     const [selection, setSelection]= useState('')
     const [quote, setQuote] = useState('')
+    const [quoteAuthor, setQuoteAuthor] = useState('')
     
 
     function login(){
@@ -13,10 +14,11 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
             setIsLoggedIn(true)
         })
     }
-    
+
     useEffect(() => {
         getQod().then((response) => {
-            setQuote(response)
+            setQuote(response.quote)
+            setQuoteAuthor(response.author)
     })
     },[])
 
@@ -41,6 +43,7 @@ const Home = ({setIsLoggedIn,setUser, isLoggedIn, user}) => {
                 <section id="quote">
                 <p className="quoteTitle">Random quote of the day</p>
                 <p className="quote">"{quote}"</p>
+                <p className="quote">{quoteAuthor}</p>
                 </section>
                 <p>Use the navigation bar to browse through the site and explore lots of user generated content.</p></section>:<p>Welcome to NorthCoders News</p>}
            {isLoggedIn? null:<p>Login to access all the juicy articles</p>}

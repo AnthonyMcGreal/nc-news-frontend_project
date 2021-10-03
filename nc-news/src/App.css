@@ -411,6 +411,7 @@ p.quote {
   .app {
     border: none;
     background-image: url('../src/pics/background.jpg');
+    overflow-x: hidden;
   }
   .contentContainer {
     width: 50%;
